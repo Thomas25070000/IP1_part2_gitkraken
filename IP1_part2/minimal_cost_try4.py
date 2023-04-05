@@ -89,25 +89,25 @@ time_windows = generate_time_windows(16)
 
 
 
-# time_windows = [
-#                 (0, 60),  # depot
-#                 (7, 30),  # 1
-#                 (10, 40),  # 2
-#                 (16, 50),  # 3
-#                 (10, 30),  # 4
-#                 (0, 40),  # 5
-#                 (5, 60),  # 6
-#                 (0, 50),  # 7
-#                 (5, 50),  # 8
-#                 (0, 30),  # 9
-#                 (10, 40),  # 10
-#                 (10, 15),  # 11
-#                 (0, 5),  # 12
-#                 (5, 10),  # 13
-#                 (7, 8),  # 14
-#                 (10, 15),  # 15
-#                 (11, 15),  # 16
-#               ]
+time_windows = [
+                (0, 60),  # depot
+                (7, 30),  # 1
+                (10, 40),  # 2
+                (16, 50),  # 3
+                (10, 30),  # 4
+                (0, 40),  # 5
+                (5, 60),  # 6
+                (0, 50),  # 7
+                (5, 50),  # 8
+                (0, 30),  # 9
+                (10, 40),  # 10
+                (10, 15),  # 11
+                (0, 5),  # 12
+                (5, 10),  # 13
+                (7, 8),  # 14
+                (10, 15),  # 15
+                (11, 15),  # 16
+              ]
 def generate_demands(csv_file_locations, csv_file_demand, n):
     # Read the CSV files into Pandas DataFrames
     locations_df = pd.read_csv(csv_file_locations)
@@ -141,7 +141,7 @@ vehicle_capacities = [15, 15, 15, 15]
 
 depot_index = 0
 
-time_limit_seconds = 10 # time limit for calculation
+time_limit_seconds = 100 # time limit for calculation
 
 
 
