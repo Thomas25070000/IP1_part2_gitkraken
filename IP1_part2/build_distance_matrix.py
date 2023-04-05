@@ -3,6 +3,7 @@ import json
 import urllib
 import pandas as pd
 import ssl
+import math
 
 
 def create_data():
@@ -12,11 +13,15 @@ def create_data():
     first_n = 17
 
     locations_df = pd.read_csv("/Users/thomasvandendorpe/Dropbox/IP1/Input data/Location_2023.csv")
-    locations = locations_df.head(first_n)
+    demand_df = pd.read_csv("/Users/thomasvandendorpe/Dropbox/IP1/Input data/Demand_2023.csv")
+    demand_df['Date'] = pd.to_datetime(demand_df['Date'], format='%d/%m/%Y')
+    demand_df = demand_df[demand_df['Date'] == '2022-07-25']
+    merged_df = pd.merge(demand_df, locations_df, on='LocationID')
+    locations = merged_df.head(first_n)
+    print(locations)
     data['lon'] = locations['lon']
     data['lat'] = locations['lat']
     return data
-
 
 def create_distance_matrix(data):
     latitudes = data["lat"]
@@ -43,6 +48,7 @@ def create_distance_matrix(data):
         response = send_request(origin_latlngs, latlngs, API_key)
         distance_matrix += build_distance_matrix(response)
     return distance_matrix
+
 
 def send_request(origin_latlngs, dest_latlngs, API_key):
     """ Build and send request for the given origin and destination latitudes and longitudes."""
